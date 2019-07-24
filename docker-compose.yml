@@ -1,0 +1,41 @@
+version: '3'
+services:
+
+  server:
+    build: ./P2P_Server
+    image: kipso/p2pserver
+    command: "./wait-for-it.sh postgres:5432 -t 30 rabbitmq:5672 -- npm start"
+    volumes:
+      - express_data
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      - rabbit
+    volumes:
+      - ".:/code"
+
+  postgres:
+    image: 'postgres:latest'
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=1003112
+      - POSTGRES_USER=kipso
+      - POSTGRES_DB=proj
+  rabbit:
+    image:  'rabbitmq:3-management'
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  client: 
+    build: ./P2P_Client
+    image: kipso/p2pclient
+    command: bash -c "./wait-for-it.sh rabbit:5432 -- npm start"
+    volumes:
+      - express_data
+    ports:
+      - "8080:8080"
+    volumes:
+      - ".:/code"
