@@ -1,0 +1,19 @@
+<div class="container">
+
+    <div ng-repeat="object in allMessages">
+        <div ng-class="{
+            'darker':object.receiverId == userId,
+        }" class="box">
+        <div ng-class="{
+            'right':object.receiverId == userId,
+        }">
+            <p>{{object.message}}</p>
+        </div>
+        <span>{{object.timestamp}}</span>
+        </div>
+    </div>
+
+    <form ng-submit = "submitChat()">
+            <input class="form-control" id="message" ng-model="inputMsg" placeholder="Type your Message">
+    </form>
+</div>

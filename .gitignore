@@ -1,0 +1,7 @@
+P2P_Client/tmp
+P2P_Client/.DS_Store
+P2P_Client/.idea
+P2P_Client/logs/*
+P2P_Client/!.gitkeep
+P2P_Client/node_modules/
+P2P_Server/node_modules/

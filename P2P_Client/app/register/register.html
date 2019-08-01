@@ -1,0 +1,19 @@
+<div class="container">
+    <form ng-submit="submit()">
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" ng-model="registerForm.userName" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" ng-model="registerForm.password" id="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirm password</label>
+            <input type="password" class="form-control" ng-model="registerForm.confirmPassword" id="confirmPassword" placeholder="Confirm password">
+        </div>
+        <div class="form-group alert alert-danger" ng-bind="formErrorText" ng-if="isFormError"></div>
+        <button type="submit" class="btn btn-outline-primary">Signup</button><br>
+        <a href="/login" class="alert-link">Already registered? Login!</a>
+        </form>
+</div>
